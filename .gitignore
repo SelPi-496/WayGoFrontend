@@ -1,0 +1,50 @@
+# Built application files
+*.apk
+*.aar
+*.ap_
+*.aab
+
+# Files for the ART/Dalvik VM
+*.dex
+
+# Java class files
+*.class
+
+# Generated files
+bin/
+gen/
+out/
+release/
+
+# Gradle files
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# Local configuration file (chứa đường dẫn SDK riêng của máy)
+local.properties
+
+# Android Studio / IntelliJ IDEA
+*.iml
+.idea/
+*.iws
+*.ipr
+.navigation/
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Keystore & Signing files (Bảo mật)
+*.jks
+*.keystore
+
+# Environment variables & Google Services
+.env
+# google-services.json
+
+# Log Files
+*.log
+
+# OS-specific files
+.DS_Store
+Thumbs.db
