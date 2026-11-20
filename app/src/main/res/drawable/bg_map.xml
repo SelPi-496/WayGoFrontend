@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/map_bg" />
+            <corners android:radius="24dp" />
+        </shape>
+    </item>
+    <item android:left="90dp" android:right="40dp" android:top="-12dp" android:bottom="240dp">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/map_road" />
+        </shape>
+    </item>
+    <item android:left="30dp" android:right="180dp" android:top="140dp" android:bottom="80dp">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/map_road" />
+        </shape>
+    </item>
+    <item android:left="160dp" android:right="30dp" android:top="230dp" android:bottom="20dp">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/map_road" />
+        </shape>
+    </item>
+</layer-list>
