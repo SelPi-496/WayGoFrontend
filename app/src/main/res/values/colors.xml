@@ -2,4 +2,58 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="waygo_blue">#0B74E5</color>
+    <color name="waygo_blue_dark">#075CB8</color>
+    <color name="waygo_blue_soft">#EAF2FF</color>
+    <color name="waygo_coral">#FF6B4A</color>
+    <color name="waygo_coral_soft">#FFF0EC</color>
+    <color name="waygo_background">#F6F8FB</color>
+    <color name="waygo_surface">#FFFFFF</color>
+    <color name="waygo_surface_alt">#F1F5FB</color>
+    <color name="waygo_text_primary">#0F172A</color>
+    <color name="waygo_text_secondary">#64748B</color>
+    <color name="waygo_text_muted">#94A3B8</color>
+    <color name="waygo_outline">#E2E8F0</color>
+    <color name="waygo_outline_soft">#F1F5F9</color>
+    <color name="waygo_success">#10B981</color>
+    <color name="waygo_success_soft">#ECFDF5</color>
+    <color name="waygo_warning">#D97706</color>
+    <color name="waygo_warning_soft">#FFFBEB</color>
+    <color name="waygo_danger">#E5484D</color>
+    <color name="waygo_danger_soft">#FDECEC</color>
+
+    <color name="cat_blue">#2563EB</color>
+    <color name="cat_blue_bg">#EFF6FF</color>
+    <color name="cat_orange">#F97316</color>
+    <color name="cat_orange_bg">#FFF7ED</color>
+    <color name="cat_cyan">#0891B2</color>
+    <color name="cat_cyan_bg">#ECFEFF</color>
+    <color name="cat_amber">#D97706</color>
+    <color name="cat_amber_bg">#FFFBEB</color>
+    <color name="cat_violet">#7C3AED</color>
+    <color name="cat_violet_bg">#F5F3FF</color>
+
+    <color name="map_bg">#DCECF1</color>
+    <color name="map_road">#C2DBE2</color>
+
+    <color name="scrim_black_70">#B3000000</color>
+    <color name="scrim_black_40">#66000000</color>
+    <color name="scrim_white_90">#E6FFFFFF</color>
+    <color name="scrim_white_70">#B3FFFFFF</color>
+    <color name="scrim_white_20">#33FFFFFF</color>
+    <color name="scrim_white_15">#26FFFFFF</color>
+    <color name="photo_icon">#99FFFFFF</color>
+
+    <color name="gradient_blue_start">#0B74E5</color>
+    <color name="gradient_blue_end">#22D3EE</color>
+    <color name="gradient_coral_start">#FF8A65</color>
+    <color name="gradient_coral_end">#FF5A36</color>
+    <color name="gradient_teal_start">#0F766E</color>
+    <color name="gradient_teal_end">#4ADE80</color>
+    <color name="gradient_indigo_start">#4F46E5</color>
+    <color name="gradient_indigo_end">#A78BFA</color>
+    <color name="gradient_sunset_start">#F59E0B</color>
+    <color name="gradient_sunset_end">#FB7185</color>
 </resources>

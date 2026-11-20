@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Widget.WayGo.Card" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">@color/waygo_surface</item>
+        <item name="cardCornerRadius">@dimen/radius_lg</item>
+        <item name="cardElevation">0dp</item>
+        <item name="strokeColor">@color/waygo_outline</item>
+        <item name="strokeWidth">@dimen/card_stroke</item>
+    </style>
+
+    <style name="Widget.WayGo.Card.Elevated">
+        <item name="cardElevation">4dp</item>
+        <item name="strokeWidth">0dp</item>
+    </style>
+
+    <style name="Widget.WayGo.Button.Primary" parent="Widget.MaterialComponents.Button">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">@dimen/text_md</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:minHeight">52dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="backgroundTint">@color/waygo_blue</item>
+        <item name="cornerRadius">@dimen/radius_pill</item>
+        <item name="rippleColor">@color/scrim_white_20</item>
+    </style>
+
+    <style name="Widget.WayGo.Button.Coral" parent="Widget.WayGo.Button.Primary">
+        <item name="backgroundTint">@color/waygo_coral</item>
+    </style>
+
+    <style name="Widget.WayGo.Button.Outline" parent="Widget.WayGo.Button.Primary">
+        <item name="android:textColor">@color/waygo_blue</item>
+        <item name="backgroundTint">@color/transparent</item>
+        <item name="strokeColor">@color/waygo_blue</item>
+        <item name="strokeWidth">1dp</item>
+    </style>
+
+    <style name="Widget.WayGo.TextButton" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">@dimen/text_sm</item>
+        <item name="android:textColor">@color/waygo_blue</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:minHeight">40dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+    </style>
+
+    <style name="Widget.WayGo.Chip" parent="Widget.MaterialComponents.Chip.Filter">
+        <item name="android:textColor">@color/chip_text_color</item>
+        <item name="android:textSize">@dimen/text_sm</item>
+        <item name="chipBackgroundColor">@color/chip_background_color</item>
+        <item name="chipStrokeColor">@color/waygo_outline</item>
+        <item name="chipStrokeWidth">1dp</item>
+        <item name="chipCornerRadius">20dp</item>
+        <item name="chipMinHeight">38dp</item>
+        <item name="checkedIconVisible">false</item>
+        <item name="chipStartPadding">12dp</item>
+        <item name="chipEndPadding">12dp</item>
+        <item name="ensureMinTouchTargetSize">false</item>
+    </style>
+
+    <style name="Widget.WayGo.SearchField" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxBackgroundColor">@color/waygo_surface</item>
+        <item name="boxStrokeColor">@color/waygo_outline</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="boxCornerRadiusTopStart">@dimen/radius_md</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/radius_md</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/radius_md</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/radius_md</item>
+        <item name="hintTextColor">@color/waygo_text_secondary</item>
+        <item name="android:textColorHint">@color/waygo_text_secondary</item>
+    </style>
+
+    <style name="Widget.WayGo.FormField" parent="Widget.WayGo.SearchField">
+        <item name="boxBackgroundColor">@color/waygo_surface_alt</item>
+        <item name="hintEnabled">false</item>
+    </style>
+
+    <style name="Widget.WayGo.BottomNavIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/waygo_blue_soft</item>
+    </style>
+
+    <style name="Widget.WayGo.Badge" parent="">
+        <item name="android:paddingStart">10dp</item>
+        <item name="android:paddingEnd">10dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+        <item name="android:textSize">@dimen/text_xs</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="Widget.WayGo.Fab" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="backgroundTint">@color/waygo_coral</item>
+        <item name="tint">@color/white</item>
+        <item name="elevation">6dp</item>
+    </style>
+
+    <style name="TextAppearance.WayGo.Title" parent="TextAppearance.Material3.HeadlineMedium">
+        <item name="android:textColor">@color/waygo_text_primary</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">@dimen/text_xl</item>
+    </style>
+
+    <style name="TextAppearance.WayGo.Section" parent="TextAppearance.Material3.TitleMedium">
+        <item name="android:textColor">@color/waygo_text_primary</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">@dimen/text_lg</item>
+    </style>
+
+    <style name="TextAppearance.WayGo.Body" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:textColor">@color/waygo_text_secondary</item>
+        <item name="android:textSize">@dimen/text_sm</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.WayGo.BottomSheet" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">24dp</item>
+        <item name="cornerSizeTopRight">24dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+    </style>
+
+    <style name="Widget.WayGo.BottomSheet" parent="Widget.MaterialComponents.BottomSheet.Modal">
+        <item name="backgroundTint">@color/waygo_surface</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.WayGo.BottomSheet</item>
+    </style>
+
+    <style name="ThemeOverlay.WayGo.BottomSheetDialog" parent="ThemeOverlay.MaterialComponents.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/Widget.WayGo.BottomSheet</item>
+    </style>
+</resources>

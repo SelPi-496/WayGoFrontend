@@ -1,3 +1,256 @@
 <resources>
-    <string name="app_name">WayGoFrontend</string>
+    <string name="app_name">Waygo</string>
+
+    <!-- Bottom navigation -->
+    <string name="nav_explore">Khám phá</string>
+    <string name="nav_trips">Kế hoạch</string>
+    <string name="nav_booking">Đặt chỗ</string>
+    <string name="nav_profile">Cá nhân</string>
+
+    <!-- Explore -->
+    <string name="greeting_prefix">Chào buổi sáng,</string>
+    <string name="user_short">Minh Anh</string>
+    <string name="explore_title">Đi đâu để thấy mình tự do?</string>
+    <string name="explore_title_highlight">tự do?</string>
+    <string name="search_hint">Bạn muốn đi đâu hôm nay?</string>
+    <string name="explore_categories">Khám phá theo cách của bạn</string>
+    <string name="cat_hotel">Khách sạn</string>
+    <string name="cat_flight">Vé máy bay</string>
+    <string name="cat_tour">Tour</string>
+    <string name="cat_food">Ẩm thực</string>
+    <string name="cat_experience">Trải nghiệm ẩn</string>
+    <string name="trending_title">Điểm đến thịnh hành</string>
+    <string name="trending_subtitle">Được yêu thích tuần này</string>
+    <string name="search_results_title">Kết quả tìm kiếm</string>
+    <string name="see_all">Xem tất cả</string>
+    <string name="destinations_found">%1$d điểm đến phù hợp</string>
+    <string name="destination_danang">Đà Nẵng</string>
+    <string name="destination_danang_place">Thành phố biển đáng sống</string>
+    <string name="destination_hoian">Hội An</string>
+    <string name="destination_hoian_place">Phố cổ rực rỡ sắc màu</string>
+    <string name="destination_halong">Vịnh Hạ Long</string>
+    <string name="destination_halong_place">Kỳ quan giữa biển trời</string>
+    <string name="price_danang_card">1.290.000đ</string>
+    <string name="price_hoian_card">890.000đ</string>
+    <string name="price_halong_card">1.650.000đ</string>
+    <string name="price_from">Từ</string>
+    <string name="price_per_person">/ người</string>
+    <string name="banner_eyebrow">Gợi ý dành riêng cho bạn</string>
+    <string name="banner_title">Tìm chuyến đi hợp “mood”</string>
+
+    <!-- Destinations list -->
+    <string name="destinations_eyebrow">Khám phá Việt Nam</string>
+    <string name="destinations_title">Điểm đến nổi bật</string>
+    <string name="filter_all">Tất cả</string>
+    <string name="filter_beach">Biển</string>
+    <string name="filter_culture">Văn hóa</string>
+    <string name="filter_nature">Thiên nhiên</string>
+    <string name="tag_trending">Đang thịnh hành</string>
+    <string name="tag_couple">Phù hợp cặp đôi</string>
+    <string name="tag_wonder">Kỳ quan thiên nhiên</string>
+
+    <!-- Destination detail -->
+    <string name="top_destination">Top điểm đến</string>
+    <string name="destination_location">Việt Nam · %1$s</string>
+    <string name="rating_49">★ 4.9</string>
+    <string name="stat_reviews">2.4k đánh giá</string>
+    <string name="stat_best_time">Thời gian đẹp</string>
+    <string name="stat_best_time_value">2–3 giờ</string>
+    <string name="stat_ticket">Vào cửa</string>
+    <string name="stat_ticket_value">Miễn phí</string>
+    <string name="about_place">Về địa điểm này</string>
+    <string name="about_place_body">Một trong những bãi biển quyến rũ nhất hành tinh với bờ cát trắng mịn, làn nước xanh trong và nhịp sống trẻ trung. Thời điểm lý tưởng nhất là bình minh.</string>
+    <string name="location_title">Vị trí</string>
+    <string name="open_map">Mở bản đồ</string>
+    <string name="map_pin_name">Bãi biển Mỹ Khê</string>
+    <string name="map_pin_distance">Cách bạn 2,4 km</string>
+    <string name="community_title">Cộng đồng nói gì</string>
+    <string name="see_reviews">Xem 2.4k đánh giá</string>
+    <string name="review_author">Linh Nguyễn</string>
+    <string name="review_time">2 ngày trước</string>
+    <string name="review_body">Biển rất sạch và yên bình vào sáng sớm. Nhất định nên dậy sớm ngắm bình minh một lần!</string>
+    <string name="add_to_itinerary">Thêm vào lịch trình</string>
+    <string name="added_to_itinerary">Đã thêm vào lịch trình</string>
+    <string name="back">Quay lại</string>
+
+    <!-- Services -->
+    <string name="service_eyebrow">Dịch vụ Waygo</string>
+    <string name="service_search_hint">Tìm %1$s phù hợp</string>
+    <string name="service_personalized">Được cá nhân hóa theo chuyến đi của bạn.</string>
+    <string name="service_from">Từ</string>
+    <string name="service_view">Xem &amp; chọn</string>
+    <string name="service_chosen">Đã chọn</string>
+
+    <!-- Map -->
+    <string name="map_eyebrow">Gần bạn</string>
+    <string name="map_title">Bản đồ khám phá</string>
+    <string name="map_suggested">Điểm đến gợi ý</string>
+
+    <!-- Notifications -->
+    <string name="notifications_eyebrow">3 cập nhật mới</string>
+    <string name="notifications_title">Thông báo</string>
+    <string name="notice_price_title">Giá khách sạn vừa giảm</string>
+    <string name="notice_price_note">Sala Beach Hotel đang giảm 18% cho ngày bạn đã chọn.</string>
+    <string name="notice_plan_title">Lịch trình đã sẵn sàng</string>
+    <string name="notice_plan_note">Waygo đã tối ưu lộ trình ngày 2 tại Hội An.</string>
+    <string name="notice_depart_title">Sắp đến giờ khởi hành</string>
+    <string name="notice_depart_note">Chuyến bay tới Đà Nẵng còn 2 ngày nữa.</string>
+    <string name="notice_hours_ago">%1$d giờ trước</string>
+
+    <!-- Trips / planner -->
+    <string name="trips_title">Các chuyến đi của tôi</string>
+    <string name="trips_subtitle">Chọn một chuyến để xem lịch trình nhiều ngày.</string>
+    <string name="trip_danang_dates">13–15 tháng 8 · 3 ngày</string>
+    <string name="trip_hoian_dates">23–27 tháng 8 · 5 ngày</string>
+    <string name="trip_halong_dates">05–08 tháng 9 · 4 ngày</string>
+    <string name="status_upcoming">Sắp tới</string>
+    <string name="status_planning">Đang lên kế hoạch</string>
+    <string name="status_draft">Bản nháp</string>
+    <string name="tap_itinerary">Nhấn để xem lịch trình chi tiết</string>
+    <string name="add_trip">Thêm chuyến đi</string>
+
+    <!-- Itinerary -->
+    <string name="itinerary_eyebrow">%1$s</string>
+    <string name="itinerary_title">Lịch trình %1$s</string>
+    <string name="day_n">Ngày %1$d</string>
+    <string name="activities_count">%1$d hoạt động</string>
+    <string name="weather">31°C</string>
+    <string name="day_empty_title">Ngày này vẫn còn trống</string>
+    <string name="day_empty_note">Thêm một địa điểm thú vị để chuyến đi thêm đáng nhớ.</string>
+    <string name="add_activity">Thêm hoạt động</string>
+
+    <!-- Add activity -->
+    <string name="add_activity_eyebrow">Lịch trình</string>
+    <string name="add_activity_title">Thêm hoạt động mới</string>
+    <string name="smart_hint_title">Gợi ý thông minh</string>
+    <string name="smart_hint_note">Thời điểm này rất hợp để khám phá về đêm.</string>
+    <string name="activity_name">Tên hoạt động</string>
+    <string name="activity_name_hint">Dạo biển đêm</string>
+    <string name="activity_time">Thời gian</string>
+    <string name="activity_time_hint">21:00</string>
+    <string name="activity_cost">Chi phí</string>
+    <string name="activity_cost_hint">Miễn phí</string>
+    <string name="activity_location">Địa điểm</string>
+    <string name="activity_location_hint">Công viên Biển Đông</string>
+    <string name="activity_name_required">Vui lòng nhập tên hoạt động</string>
+
+    <!-- Booking -->
+    <string name="booking_eyebrow">Lưu trú tại %1$s</string>
+    <string name="booking_title">Chọn nơi để nghỉ ngơi</string>
+    <string name="booking_subtitle">12–15 tháng 8 · 2 khách · 1 phòng</string>
+    <string name="search_hotel_hint">Tìm khách sạn tại %1$s</string>
+    <string name="filter_best_price">Giá tốt</string>
+    <string name="filter_center">Gần trung tâm</string>
+    <string name="filter_pool">Hồ bơi</string>
+    <string name="filter_stars">4–5 sao</string>
+    <string name="best_match_count">%1$d nơi phù hợp nhất</string>
+    <string name="best_match_note">Đề xuất theo lịch trình của bạn</string>
+    <string name="map">Bản đồ</string>
+    <string name="reviews_count">%1$s đánh giá</string>
+    <string name="price_per_night">/ đêm</string>
+    <string name="free_cancel">Miễn phí hủy</string>
+    <string name="amenity_breakfast">Ăn sáng</string>
+    <string name="amenity_pool">Hồ bơi</string>
+    <string name="amenity_wifi">Wi-Fi miễn phí</string>
+    <string name="room_title">Phòng Deluxe hướng biển</string>
+    <string name="room_detail">1 giường đôi · 2 khách · 32 m²</string>
+    <string name="check_in_title">NHẬN PHÒNG</string>
+    <string name="check_in_value">12 Thg 8 · 14:00</string>
+    <string name="check_out_title">TRẢ PHÒNG</string>
+    <string name="check_out_value">15 Thg 8 · 12:00</string>
+    <string name="total_nights">Tổng 3 đêm, đã gồm thuế</string>
+    <string name="book_now">Đặt trước ngay</string>
+    <string name="booking_demo">Bản demo · Chưa phát sinh thanh toán thực tế</string>
+    <string name="booking_success_title">Đã giữ chỗ thành công!</string>
+    <string name="booking_success_message">%1$s đã được thêm vào chuyến đi %2$s của bạn.</string>
+    <string name="booking_code">Mã đặt chỗ</string>
+    <string name="booking_total">Tổng tạm tính</string>
+    <string name="done">Hoàn tất</string>
+
+    <!-- Profile -->
+    <string name="profile_title">Hồ sơ của tôi</string>
+    <string name="profile_name">Minh Anh</string>
+    <string name="profile_full_name">Minh Anh Nguyễn</string>
+    <string name="profile_email">minhanh@waygo.vn</string>
+    <string name="stat_trips">Chuyến đi</string>
+    <string name="stat_saved">Đã lưu</string>
+    <string name="stat_reviews_value">Đánh giá</string>
+    <string name="saved_places">Địa điểm đã lưu</string>
+    <string name="account_settings">Cài đặt tài khoản</string>
+    <string name="help_support">Trợ giúp &amp; hỗ trợ</string>
+    <string name="logout">Đăng xuất</string>
+    <string name="saved_badge">Đã lưu</string>
+    <string name="profile_page_eyebrow">Tài khoản Waygo</string>
+    <string name="field_full_name">Họ và tên</string>
+    <string name="field_email">Email</string>
+    <string name="field_phone">Số điện thoại</string>
+    <string name="save_changes">Lưu thay đổi</string>
+    <string name="logout_question">Bạn muốn đăng xuất?</string>
+    <string name="logout_note">Bạn vẫn có thể quay lại và tiếp tục những chuyến đi đang lên kế hoạch.</string>
+    <string name="confirm_logout">Xác nhận đăng xuất</string>
+    <string name="help_title">Waygo luôn ở đây hỗ trợ</string>
+    <string name="help_note">Trò chuyện với đội ngũ Waygo hoặc xem câu hỏi thường gặp.</string>
+    <string name="start_chat">Bắt đầu trò chuyện</string>
+
+    <!-- Travel advisor -->
+    <string name="advisor_badge">WAYGO AI</string>
+    <string name="advisor_title">Chuyến đi trong mơ\ncủa bạn trông thế nào?</string>
+    <string name="advisor_subtitle">Chia sẻ một chút, Waygo sẽ tìm nơi thật hợp với bạn.</string>
+    <string name="advisor_when">Bạn muốn đi khi nào?</string>
+    <string name="from_date">Từ ngày</string>
+    <string name="to_date">Đến ngày</string>
+    <string name="advisor_companion">Bạn đi cùng ai?</string>
+    <string name="companion_solo">Một mình</string>
+    <string name="companion_couple">Cặp đôi</string>
+    <string name="companion_friends">Bạn bè</string>
+    <string name="companion_family">Gia đình</string>
+    <string name="budget_title">Ngân sách dự kiến</string>
+    <string name="budget_default">3–6 triệu / người</string>
+    <string name="budget_saving">Tiết kiệm</string>
+    <string name="budget_comfortable">Thoải mái</string>
+    <string name="looking_for">Bạn đang tìm kiếm điều gì?</string>
+    <string name="mood_beach">Biển</string>
+    <string name="mood_nature">Thiên nhiên</string>
+    <string name="mood_food">Ẩm thực</string>
+    <string name="mood_culture">Văn hóa</string>
+    <string name="mood_resort">Nghỉ dưỡng</string>
+    <string name="mood_adventure">Phiêu lưu</string>
+    <string name="special_wish">Điều bạn đặc biệt mong muốn</string>
+    <string name="note_default">Muốn nơi có biển đẹp, đồ ăn ngon và không quá đông đúc.</string>
+    <string name="ask_ai">Để Gemini tìm điểm đến</string>
+    <string name="advisor_demo">Bản demo giao diện · Kết quả AI đang được mô phỏng</string>
+    <string name="ai_loading_title">Gemini đang tìm kiếm...</string>
+    <string name="ai_loading_note">Đang cân nhắc thời tiết, ngân sách và “mood” của bạn để tìm những nơi phù hợp nhất.</string>
+    <string name="ai_analyzed">ĐÃ PHÂN TÍCH XONG</string>
+    <string name="ai_results_title">3 nơi rất hợp với bạn</string>
+    <string name="ai_results_note">Chọn một nơi để bắt đầu lên kế hoạch.</string>
+    <string name="match_percent">%1$s hợp</string>
+    <string name="price_from_label">Từ %1$s</string>
+    <string name="ai_reason_title">Vì sao chọn %1$s?</string>
+    <string name="ai_reason_note">Phù hợp nhất với ngân sách, thời gian và sở thích bạn vừa chia sẻ.</string>
+    <string name="choose_and_plan">Chọn %1$s &amp; tạo kế hoạch</string>
+    <string name="change_request">Thay đổi yêu cầu</string>
+
+    <!-- Dialogs & toast -->
+    <string name="coming_soon">Tính năng sẽ sớm được cập nhật</string>
+    <string name="activity_added_demo">Đã thêm hoạt động</string>
+    <string name="see_all_toast">Đang hiển thị các điểm đến nổi bật</string>
+    <string name="settings_saved">Đã lưu thay đổi (demo UI)</string>
+
+    <!-- Accessibility -->
+    <string name="cd_avatar">Ảnh đại diện</string>
+    <string name="cd_toggle_theme">Chuyển chế độ sáng/tối</string>
+    <string name="cd_notifications">Thông báo</string>
+    <string name="cd_map">Mở bản đồ</string>
+    <string name="cd_chevron">Mở mục</string>
+    <string name="cd_search">Tìm kiếm</string>
+    <string name="cd_favorite">Yêu thích</string>
+    <string name="cd_back">Quay lại</string>
+    <string name="cd_close">Đóng</string>
+    <string name="cd_add">Thêm</string>
+    <string name="cd_more">Tùy chọn khác</string>
+    <string name="cd_calendar">Chọn ngày</string>
+    <string name="cd_star">Đánh giá</string>
+    <string name="cd_share">Chia sẻ</string>
+    <string name="cd_filter">Bộ lọc</string>
 </resources>
