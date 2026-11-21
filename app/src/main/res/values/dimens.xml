@@ -29,4 +29,9 @@
 
     <dimen name="touch_target">48dp</dimen>
     <dimen name="card_stroke">1dp</dimen>
+
+    <dimen name="lock_badge_size">15dp</dimen>
+    <dimen name="lock_badge_padding">3dp</dimen>
+    <dimen name="lock_badge_offset">12dp</dimen>
+    <dimen name="lock_badge_offset_y">9dp</dimen>
 </resources>
