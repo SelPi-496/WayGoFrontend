@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.waygofrontend.MainActivity
 import com.example.waygofrontend.R
 import com.example.waygofrontend.data.WaygoData
 import com.example.waygofrontend.databinding.FragmentItineraryDetailBinding
@@ -37,7 +38,8 @@ class ItineraryDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        trip = WaygoData.tripFor(arguments?.getString(ARG_DESTINATION))
+        val selectedId = (requireActivity() as MainActivity).selectedDestinationId()
+        trip = WaygoData.tripFor(arguments?.getString(ARG_DESTINATION), selectedId)
         for (day in 1..trip.days) {
             activitiesByDay[day] = WaygoData.activities(day).toMutableList()
         }

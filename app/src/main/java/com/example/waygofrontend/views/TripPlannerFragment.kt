@@ -55,7 +55,8 @@ class TripPlannerFragment : Fragment() {
         binding.btnFind.setOnClickListener { startLoading() }
         binding.btnChange.setOnClickListener { showForm() }
         binding.btnChoose.setOnClickListener {
-            (requireActivity() as MainActivity).onTripCreated()
+            val destination = WaygoData.destinations[selectedIndex]
+            (requireActivity() as MainActivity).onTripCreated(destination.id)
         }
 
         renderResults()

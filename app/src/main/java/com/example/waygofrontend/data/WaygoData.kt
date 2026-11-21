@@ -119,17 +119,32 @@ object WaygoData {
         Category("Trải nghiệm ẩn", R.drawable.ic_sparkle, R.color.cat_violet, R.color.cat_violet_bg)
     )
 
-    val trips = listOf(
-        Trip(destinations[0], "13–15 tháng 8", 3, "Sắp tới"),
-        Trip(destinations[1], "23–27 tháng 8", 5, "Đang lên kế hoạch"),
-        Trip(destinations[2], "05–08 tháng 9", 4, "Bản nháp")
-    )
+    val trips = plannedTrips()
 
     fun destination(id: String?): Destination =
         destinations.firstOrNull { it.id == id } ?: destinations[0]
 
-    fun tripFor(id: String?): Trip =
-        trips.firstOrNull { it.destination.id == id } ?: trips[0]
+    fun plannedTrips(selectedDestinationId: String? = null): List<Trip> {
+        val ordered = if (selectedDestinationId == null) {
+            destinations
+        } else {
+            val selected = destination(selectedDestinationId)
+            listOf(selected) + destinations.filter { it.id != selected.id }
+        }
+        val meta = listOf(
+            Triple("13–15 tháng 8", 3, "Sắp tới"),
+            Triple("23–27 tháng 8", 5, "Đang lên kế hoạch"),
+            Triple("05–08 tháng 9", 4, "Bản nháp")
+        )
+        return ordered.mapIndexed { index, destination ->
+            val (range, days, status) = meta[index]
+            Trip(destination, range, days, status)
+        }
+    }
+
+    fun tripFor(id: String?, selectedDestinationId: String? = null): Trip =
+        plannedTrips(selectedDestinationId).firstOrNull { it.destination.id == id }
+            ?: plannedTrips(selectedDestinationId).first()
 
     fun activities(day: Int): List<Activity> = when (day) {
         2 -> listOf(

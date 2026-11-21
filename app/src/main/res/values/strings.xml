@@ -90,7 +90,7 @@
     <string name="notifications_eyebrow">3 cập nhật mới</string>
     <string name="notifications_title">Thông báo</string>
     <string name="notice_price_title">Giá khách sạn vừa giảm</string>
-    <string name="notice_price_note">Sala Beach Hotel đang giảm 18% cho ngày bạn đã chọn.</string>
+    <string name="notice_price_note" formatted="false">Sala Beach Hotel đang giảm 18% cho ngày bạn đã chọn.</string>
     <string name="notice_plan_title">Lịch trình đã sẵn sàng</string>
     <string name="notice_plan_note">Waygo đã tối ưu lộ trình ngày 2 tại Hội An.</string>
     <string name="notice_depart_title">Sắp đến giờ khởi hành</string>
@@ -253,4 +253,5 @@
     <string name="cd_star">Đánh giá</string>
     <string name="cd_share">Chia sẻ</string>
     <string name="cd_filter">Bộ lọc</string>
+    <string name="cd_locked">Cần tạo chuyến đi trước</string>
 </resources>

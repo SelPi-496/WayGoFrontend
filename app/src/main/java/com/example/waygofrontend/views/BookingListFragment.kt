@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.waygofrontend.MainActivity
 import com.example.waygofrontend.R
 import com.example.waygofrontend.data.WaygoData
 import com.example.waygofrontend.databinding.FragmentBookingListBinding
@@ -35,7 +36,10 @@ class BookingListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        destination = WaygoData.destination(arguments?.getString(ExploreFragment.ARG_DESTINATION))
+        val selectedId = (requireActivity() as MainActivity).selectedDestinationId()
+        destination = WaygoData.destination(
+            arguments?.getString(ExploreFragment.ARG_DESTINATION) ?: selectedId
+        )
         hotels = WaygoData.hotels(destination.id)
 
         binding.tvEyebrow.text = getString(R.string.booking_eyebrow, destination.name)

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.waygofrontend.MainActivity
 import com.example.waygofrontend.R
 import com.example.waygofrontend.data.WaygoData
 import com.example.waygofrontend.databinding.FragmentTripsBinding
@@ -29,7 +30,8 @@ class TripsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val container = binding.tripList
-        WaygoData.trips.forEach { trip ->
+        val selectedId = (requireActivity() as MainActivity).selectedDestinationId()
+        WaygoData.plannedTrips(selectedId).forEach { trip ->
             val item = ItemTripBinding.inflate(layoutInflater, container, false)
             item.photo.setBackgroundResource(trip.destination.imageRes)
             item.tvName.text = trip.destination.name
