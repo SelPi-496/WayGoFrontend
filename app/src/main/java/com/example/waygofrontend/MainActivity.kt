@@ -20,6 +20,7 @@ import androidx.navigation.NavOptions
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.example.waygofrontend.databinding.ActivityMainBinding
+import com.example.waygofrontend.di.AppContainer
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,6 +33,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        AppContainer.init(this)
         hasTrips = savedInstanceState?.getBoolean(KEY_HAS_TRIPS) ?: false
         selectedDestinationId = savedInstanceState?.getString(KEY_SELECTED_DESTINATION)
 
