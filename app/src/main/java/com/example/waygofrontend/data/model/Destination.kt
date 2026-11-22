@@ -6,6 +6,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "destinations")
 data class Destination(
     @PrimaryKey val id: String,
+    val firebaseId: String? = null,
     val name: String,
     val place: String,
     val rating: String,
@@ -13,5 +14,7 @@ data class Destination(
     val match: String,
     val reason: String,
     val topLabel: String,
-    val imageUrl: String? = null
+    val imageUrl: String? = null,
+    val syncedAt: Long = 0,
+    val isDeleted: Boolean = false
 )

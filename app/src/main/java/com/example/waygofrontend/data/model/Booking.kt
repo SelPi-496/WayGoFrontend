@@ -15,9 +15,12 @@ import androidx.room.PrimaryKey
 )
 data class Booking(
     @PrimaryKey val id: String,
+    val firebaseId: String? = null,
     val tripId: String,
     val service: String,
     val price: String,
     val status: String,
+    val syncedAt: Long = 0,
+    val isDeleted: Boolean = false,
     val createdAt: Long = System.currentTimeMillis()
 )

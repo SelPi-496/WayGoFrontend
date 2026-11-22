@@ -3,10 +3,12 @@ package com.example.waygofrontend.data.local
 import android.content.Context
 import com.example.waygofrontend.data.local.dao.BookingDao
 import com.example.waygofrontend.data.local.dao.DestinationDao
+import com.example.waygofrontend.data.local.dao.SyncStatusDao
 import com.example.waygofrontend.data.local.dao.TripDao
 import com.example.waygofrontend.data.local.dao.UserDao
 import com.example.waygofrontend.data.model.Booking
 import com.example.waygofrontend.data.model.Destination
+import com.example.waygofrontend.data.model.SyncStatus
 import com.example.waygofrontend.data.model.Trip
 import com.example.waygofrontend.data.model.User
 import kotlinx.coroutines.flow.Flow
@@ -15,7 +17,8 @@ class LocalDataSource(
     private val destinationDao: DestinationDao,
     private val tripDao: TripDao,
     private val userDao: UserDao,
-    private val bookingDao: BookingDao
+    private val bookingDao: BookingDao,
+    private val syncStatusDao: SyncStatusDao
 ) {
 
     companion object {
@@ -29,7 +32,8 @@ class LocalDataSource(
                     db.destinationDao(),
                     db.tripDao(),
                     db.userDao(),
-                    db.bookingDao()
+                    db.bookingDao(),
+                    db.syncStatusDao()
                 ).also { INSTANCE = it }
             }
         }
@@ -63,4 +67,28 @@ class LocalDataSource(
     fun getBookingsByTrip(tripId: String): Flow<List<Booking>> = bookingDao.getByTrip(tripId)
     suspend fun insertBooking(booking: Booking) = bookingDao.insert(booking)
     suspend fun insertBookings(bookings: List<Booking>) = bookingDao.insertAll(bookings)
+
+    // Sync Status
+    suspend fun getSyncStatus(tableName: String, recordId: String): SyncStatus? =
+        syncStatusDao.getSyncStatus(tableName, recordId)
+
+    suspend fun markSynced(tableName: String, recordId: String) =
+        syncStatusDao.insertSyncStatus(
+            SyncStatus(
+                tableName = tableName,
+                recordId = recordId,
+                status = "SYNCED",
+                lastSyncedAt = System.currentTimeMillis()
+            )
+        )
+
+    suspend fun markPending(tableName: String, recordId: String) =
+        syncStatusDao.insertSyncStatus(
+            SyncStatus(
+                tableName = tableName,
+                recordId = recordId,
+                status = "PENDING",
+                lastSyncedAt = 0
+            )
+        )
 }
