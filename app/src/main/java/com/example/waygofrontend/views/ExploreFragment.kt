@@ -14,18 +14,27 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.waygofrontend.MainActivity
 import com.example.waygofrontend.R
-import com.example.waygofrontend.data.WaygoData
 import com.example.waygofrontend.databinding.FragmentExploreBinding
 import com.example.waygofrontend.databinding.ItemCategoryBinding
 import com.example.waygofrontend.databinding.ItemDestinationCardBinding
+import com.example.waygofrontend.ui.viewmodel.ExploreViewModel
+import com.example.waygofrontend.di.AppContainer
+import com.example.waygofrontend.di.ViewModelFactory
+import kotlinx.coroutines.launch
 
 class ExploreFragment : Fragment() {
 
     private var _binding: FragmentExploreBinding? = null
     private val binding get() = _binding!!
+
+    private val viewModel: ExploreViewModel by viewModels {
+        ViewModelFactory { ExploreViewModel(AppContainer.getRepository()) }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,15 +49,34 @@ class ExploreFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         highlightTitle()
-        renderCategories()
-        renderDestinations(WaygoData.destinations)
         setupActions()
         setupSearch()
+        observeViewModel()
     }
 
     override fun onResume() {
         super.onResume()
         updateThemeIcon()
+    }
+
+    private fun observeViewModel() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.state.collect { state ->
+                binding.tvTrendingTitle.text = if (state.searchQuery.isEmpty()) {
+                    getString(R.string.trending_title)
+                } else {
+                    getString(R.string.search_results_title, state.destinations.size)
+                }
+                binding.tvTrendingSubtitle.text = if (state.searchQuery.isEmpty()) {
+                    getString(R.string.trending_subtitle)
+                } else {
+                    ""
+                }
+                renderCategories()
+                renderDestinations(state.destinations)
+            }
+        }
+        viewModel.loadDestinations()
     }
 
     private fun highlightTitle() {
@@ -80,7 +108,8 @@ class ExploreFragment : Fragment() {
         val container = binding.categoryContainer
         container.removeAllViews()
         val inflater = layoutInflater
-        WaygoData.categories.forEach { category ->
+        // Categories are static, keep using mock for now until API is ready
+        com.example.waygofrontend.data.WaygoData.categories.forEach { category ->
             val item = ItemCategoryBinding.inflate(inflater, container, false)
             item.label.text = category.label
             item.icon.setImageResource(category.iconRes)
@@ -97,13 +126,20 @@ class ExploreFragment : Fragment() {
         }
     }
 
-    private fun renderDestinations(items: List<WaygoData.Destination>) {
+    private fun renderDestinations(items: List<com.example.waygofrontend.data.model.Destination>) {
         val container = binding.destinationContainer
         container.removeAllViews()
         val inflater = layoutInflater
         items.forEach { destination ->
             val item = ItemDestinationCardBinding.inflate(inflater, container, false)
-            item.photo.setBackgroundResource(destination.imageRes)
+            // Use imageUrl if available, otherwise fallback to drawable
+            val resId = when {
+                destination.imageUrl != null -> 0
+                else -> com.example.waygofrontend.R.drawable.bg_photo_beach
+            }
+            if (resId != 0) {
+                item.photo.setBackgroundResource(resId)
+            }
             item.tvName.text = destination.name
             item.tvPlace.text = destination.place
             item.tvPriceLabel.text = getString(R.string.price_from) + " " + destination.price
@@ -128,7 +164,7 @@ class ExploreFragment : Fragment() {
         }
     }
 
-    private fun openDetail(destination: WaygoData.Destination) {
+    private fun openDetail(destination: com.example.waygofrontend.data.model.Destination) {
         val args = Bundle().apply { putString(ARG_DESTINATION, destination.id) }
         findNavController().navigate(R.id.action_explore_to_detail, args)
     }
@@ -139,18 +175,7 @@ class ExploreFragment : Fragment() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) = Unit
             override fun afterTextChanged(s: Editable?) {
                 val query = s?.toString()?.trim().orEmpty()
-                val results = WaygoData.destinations.filter {
-                    it.name.lowercase().contains(query.lowercase())
-                }
-                renderDestinations(results)
-                if (query.isEmpty()) {
-                    binding.tvTrendingTitle.setText(R.string.trending_title)
-                    binding.tvTrendingSubtitle.setText(R.string.trending_subtitle)
-                } else {
-                    binding.tvTrendingTitle.setText(R.string.search_results_title)
-                    binding.tvTrendingSubtitle.text =
-                        getString(R.string.destinations_found, results.size)
-                }
+                viewModel.searchDestinations(query)
             }
         })
     }

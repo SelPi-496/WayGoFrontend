@@ -7,15 +7,25 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.waygofrontend.R
-import com.example.waygofrontend.data.WaygoData
+import com.example.waygofrontend.data.model.Destination
 import com.example.waygofrontend.databinding.FragmentDestinationDetailBinding
+import com.example.waygofrontend.ui.viewmodel.DestinationDetailViewModel
+import com.example.waygofrontend.di.AppContainer
+import com.example.waygofrontend.di.ViewModelFactory
+import kotlinx.coroutines.launch
 
 class DestinationDetailFragment : Fragment() {
 
     private var _binding: FragmentDestinationDetailBinding? = null
     private val binding get() = _binding!!
+
+    private val viewModel: DestinationDetailViewModel by viewModels {
+        ViewModelFactory { DestinationDetailViewModel(AppContainer.getRepository()) }
+    }
 
     private var saved = false
     private var added = false
@@ -32,10 +42,11 @@ class DestinationDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val destination = WaygoData.destination(arguments?.getString(ExploreFragment.ARG_DESTINATION))
-        binding.photo.setBackgroundResource(destination.imageRes)
-        binding.tvName.text = destination.name
-        binding.tvLocation.text = getString(R.string.destination_location, destination.place)
+        val destinationId = arguments?.getString(ExploreFragment.ARG_DESTINATION)
+        if (destinationId != null) {
+            viewModel.loadDestination(destinationId)
+            observeViewModel(destinationId)
+        }
 
         binding.btnBack.setOnClickListener { findNavController().navigateUp() }
         binding.btnShare.setOnClickListener {
@@ -46,6 +57,28 @@ class DestinationDetailFragment : Fragment() {
         binding.btnFavorite.setOnClickListener { toggleSaved() }
         binding.btnSaveBottom.setOnClickListener { toggleSaved() }
         binding.btnAddItinerary.setOnClickListener { toggleAdded() }
+    }
+
+    private fun observeViewModel(destinationId: String) {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.state.collect { state ->
+                if (state.isLoading) {
+                    // Could show loading
+                }
+                if (state.error != null) {
+                    // Could show error
+                }
+                state.destination?.let { destination ->
+                    bindDestination(destination)
+                }
+            }
+        }
+    }
+
+    private fun bindDestination(destination: Destination) {
+        binding.photo.setBackgroundResource(com.example.waygofrontend.R.drawable.bg_photo_beach)
+        binding.tvName.text = destination.name
+        binding.tvLocation.text = getString(R.string.destination_location, destination.place)
     }
 
     private fun toggleSaved() {
