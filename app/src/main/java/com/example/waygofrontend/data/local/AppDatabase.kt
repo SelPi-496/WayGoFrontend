@@ -1,11 +1,14 @@
 package com.example.waygofrontend.data.local
 
+import android.content.ContentValues
 import android.content.Context
+import android.database.sqlite.SQLiteDatabase
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
+import com.example.waygofrontend.data.WaygoData
 import com.example.waygofrontend.data.local.dao.BookingDao
 import com.example.waygofrontend.data.local.dao.DestinationDao
 import com.example.waygofrontend.data.local.dao.SyncStatusDao
@@ -25,7 +28,8 @@ import com.example.waygofrontend.data.model.User
         Booking::class,
         SyncStatus::class
     ],
-    version = 2
+    version = 2,
+    exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
 
@@ -73,6 +77,27 @@ abstract class AppDatabase : RoomDatabase() {
                     "waygo_database"
                 )
                     .addMigrations(MIGRATION_1_2)
+                    .fallbackToDestructiveMigration(true)
+                    .addCallback(object : Callback() {
+                        override fun onCreate(db: SupportSQLiteDatabase) {
+                            super.onCreate(db)
+                            WaygoData.destinations.forEach { d ->
+                                val values = ContentValues().apply {
+                                    put("id", d.id)
+                                    put("name", d.name)
+                                    put("place", d.place)
+                                    put("rating", d.rating)
+                                    put("price", d.price)
+                                    put("match", d.match)
+                                    put("reason", d.reason)
+                                    put("topLabel", d.topLabel)
+                                    put("syncedAt", 0L)
+                                    put("isDeleted", 0)
+                                }
+                                db.insert("destinations", SQLiteDatabase.CONFLICT_REPLACE, values)
+                            }
+                        }
+                    })
                     .build()
                     .also { INSTANCE = it }
             }
