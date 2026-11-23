@@ -41,11 +41,11 @@ RepositoryImpl (nguồn duy nhất)
 
 Lưu cache toàn bộ dữ liệu trên điện thoại để dùng offline:
 
-- `users` — thông tin người dùng
-- `trips` — lịch trình du lịch
-- `bookings` — đặt chỗ/đặt vé
-- `destinations` — điểm đến
-- `sync_status` — đánh dấu dữ liệu đã sync lên Firebase chưa
+- `users` — thông tin người dùng (firebaseUid, syncedAt)
+- `trips` — lịch trình du lịch (firebaseId, syncedAt, isDeleted)
+- `bookings` — đặt chỗ/đặt vé (firebaseId, syncedAt, isDeleted)
+- `destinations` — điểm đến (firebaseId, syncedAt, isDeleted)
+- `sync_status` — đánh dấu dữ liệu đã sync lên Firebase chưa (PENDING/SYNCED)
 
 ### Firebase (Cloud)
 
@@ -69,7 +69,8 @@ Lưu cache toàn bộ dữ liệu trên điện thoại để dùng offline:
 3. Tạo project trên [Firebase Console](https://console.firebase.google.com)
 4. Thêm Android app, tải file `google-services.json` vào thư mục `app/`
 5. Bật **Authentication** (Email/Password) và **Firestore Database** trên Firebase
-6. Chạy ứng dụng trên thiết bị hoặc emulator
+6. Cấu hình Firestore Security Rules (xem chi tiết dưới)
+7. Chạy ứng dụng trên thiết bị hoặc emulator
 
 ## 🛠️ Công nghệ chính
 
@@ -79,6 +80,31 @@ Lưu cache toàn bộ dữ liệu trên điện thoại để dùng offline:
 - [Retrofit](https://square.github.io/retrofit/) — HTTP client (nếu có API riêng)
 - [Kotlin Coroutines + Flow](https://kotlinlang.org/docs/coroutines-overview.html) — Xử lý bất đồng bộ
 - [ViewModel + LiveData](https://developer.android.com/topic/libraries/architecture/viewmodel) — Quản lý trạng thái UI
+
+## 🔒 Firestore Security Rules (mẫu)
+
+Trong Firebase Console → Firestore Database → Rules:
+
+```javascript
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+    match /trips/{tripId} {
+      allow read, write: if request.auth != null && request.auth.uid == resource.data.userId;
+    }
+    match /bookings/{bookingId} {
+      allow read, write: if request.auth != null && request.auth.uid == resource.data.userId;
+    }
+    match /destinations/{destinationId} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+  }
+}
+```
 
 ## 📄 License
 
