@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.google.services)
 }
 
 android {
@@ -10,7 +11,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.example.waygofrontend"
+        applicationId = "com.example.waygo"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -55,6 +56,8 @@ dependencies {
     implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.lifecycle.livedata.ktx)
     implementation(libs.kotlinx.coroutines.android)
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.auth)
     ksp(libs.room.compiler)
     testImplementation(libs.junit)
     androidTestImplementation(libs.espresso.core)
