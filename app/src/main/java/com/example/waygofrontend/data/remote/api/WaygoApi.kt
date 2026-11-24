@@ -43,13 +43,6 @@ interface WaygoApi {
     @GET("users/{id}")
     fun getUser(@Path("id") id: String): Call<ApiResponse<User>>
 
-    // Auth
-    @POST("auth/login")
-    fun login(@Body loginRequest: LoginRequest): Call<ApiResponse<AuthResponse>>
-
-    @POST("auth/register")
-    fun register(@Body registerRequest: RegisterRequest): Call<ApiResponse<AuthResponse>>
-
     // Bookings
     @POST("bookings")
     fun createBooking(@Body booking: Booking): Call<ApiResponse<Booking>>
@@ -57,19 +50,3 @@ interface WaygoApi {
     @GET("bookings")
     fun getBookings(@Query("tripId") tripId: String): Call<ApiResponse<List<Booking>>>
 }
-
-data class LoginRequest(
-    val email: String,
-    val password: String
-)
-
-data class RegisterRequest(
-    val email: String,
-    val password: String,
-    val displayName: String?
-)
-
-data class AuthResponse(
-    val user: User,
-    val token: String
-)

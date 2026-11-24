@@ -1,5 +1,6 @@
 package com.example.waygofrontend.data.repository
 
+import com.example.waygofrontend.data.firebase.FirebaseAuthHelper
 import com.example.waygofrontend.data.local.LocalDataSource
 import com.example.waygofrontend.data.model.ApiResponse
 import com.example.waygofrontend.data.model.Booking
@@ -9,10 +10,14 @@ import com.example.waygofrontend.data.model.User
 import com.example.waygofrontend.data.remote.RemoteDataSource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.withContext
+import kotlinx.coroutines.Dispatchers
+import com.google.android.gms.tasks.Tasks
 
 class RepositoryImpl(
     private val localDataSource: LocalDataSource,
-    private val remoteDataSource: RemoteDataSource
+    private val remoteDataSource: RemoteDataSource,
+    private val firebaseAuthHelper: FirebaseAuthHelper
 ) : DestinationRepository,
     TripRepository,
     UserRepository,
@@ -75,12 +80,36 @@ class RepositoryImpl(
 
     override fun getUserByEmail(email: String): Flow<User?> = localDataSource.getUserByEmail(email)
 
-    override suspend fun login(email: String, password: String): ApiResponse<User> {
-        return remoteDataSource.login(email, password)
+    override suspend fun login(email: String, password: String): ApiResponse<User> = withContext(Dispatchers.IO) {
+        val result: ApiResponse<User> = try {
+            val authResult = Tasks.await(firebaseAuthHelper.signIn(email, password))
+            val user = firebaseAuthHelper.toUserModel(authResult.user)
+            if (user == null) {
+                ApiResponse(null, "User data is null", false)
+            } else {
+                localDataSource.insertUser(user)
+                ApiResponse(user, "Đăng nhập thành công", true)
+            }
+        } catch (e: Exception) {
+            ApiResponse(null, "Đăng nhập thất bại: ${e.message}", false)
+        }
+        return@withContext result
     }
 
-    override suspend fun register(email: String, password: String, displayName: String?): ApiResponse<User> {
-        return remoteDataSource.register(email, password, displayName)
+    override suspend fun register(email: String, password: String, displayName: String?): ApiResponse<User> = withContext(Dispatchers.IO) {
+        val result: ApiResponse<User> = try {
+            val authResult = Tasks.await(firebaseAuthHelper.signUp(email, password, displayName))
+            val user = firebaseAuthHelper.toUserModel(authResult.user)
+            if (user == null) {
+                ApiResponse(null, "User data is null", false)
+            } else {
+                localDataSource.insertUser(user)
+                ApiResponse(user, "Đăng ký thành công", true)
+            }
+        } catch (e: Exception) {
+            ApiResponse(null, "Đăng ký thất bại: ${e.message}", false)
+        }
+        return@withContext result
     }
 
     override suspend fun getUserRemote(id: String): ApiResponse<User> {

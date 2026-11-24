@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "3205265163",
+    "project_id": "waygo-9ff8d",
+    "storage_bucket": "waygo-9ff8d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:3205265163:android:f7b97e509c4ff0d290140e",
+        "android_client_info": {
+          "package_name": "com.example.waygo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "3205265163-9hn0i6rfhfrp3inu12qok5rgofn8l4nh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMTWZt4he3owDfYu_GVj6hsgxNDxWKeGk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "3205265163-9hn0i6rfhfrp3inu12qok5rgofn8l4nh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
